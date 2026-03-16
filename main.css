@@ -1,0 +1,61 @@
+:root{
+    font-family: sans-serif;
+}
+
+article{
+
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin: 1rem;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    justify-content: space-between;
+}
+
+article .dados_contato{
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+.dados_contato p{
+    margin: 0 0.1rem 0.8rem 0;
+}
+
+.dados_contato h3{
+    margin: 0 0.1rem 0.8rem 0;
+}
+
+.botoes_card{
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+
+.botoes_card a{
+    padding: 0.2rem .5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.b_excluir{
+    background-color: #ff4d4d;
+    color: white;
+}
+
+.b_editar{
+    background-color: #4d77ff;
+    color: white;
+}
+
+.icone_usuario{
+    width:1.5rem; 
+    height:1.5rem; 
+    vertical-align:middle; 
+    margin-right:5px;
+}
+
