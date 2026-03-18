@@ -45,13 +45,20 @@ if (!empty($_POST['nome']) && !empty($_POST['telefone']) && !empty($_POST['email
     </head>
 
     <body>
-        <h1>Editar Contato</h1>
-        <form method="post">
-            <label>Nome: <input type="text" name="nome" value="<?php echo $contato['nome']; ?>"></label><br>
-            <label>Telefone: <input type="text" name="telefone" value="<?php echo $contato['telefone']; ?>"></label><br>
-            <label>Email: <input type="text" name="email" value="<?php echo $contato['email']; ?>"></label><br>
-            <input type="submit" value="Salvar Alterações">
-        </form>
+        <main>
+            <h1>Editar Contato</h1>
+            <form class="form_editar" method="post">
+
+                <div>
+                    <label>Nome: <input class="" type="text" name="nome" value="<?php echo $contato['nome']; ?>"></label><br>
+                    <label>Telefone: <input class="" type="text" name="telefone" value="<?php echo $contato['telefone']; ?>"></label><br>
+                    <label>Email: <input class="" type="email" name="email" value="<?php echo $contato['email']; ?>"></label><br>
+                </div>
+
+                <input class="btn_salvar" type="submit" value="Salvar Alterações">
+
+            </form>
+        </main>
     </body>
 </html>
 
