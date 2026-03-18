@@ -7,45 +7,65 @@ $nome = $_POST['nome'];
 $telefone = $_POST['telefone'];
 $email = $_POST['email'];
 
-$sql = "INSERT INTO lista_contato(nome, telefone, email) VALUES('$nome', '$telefone', '$email')";
+$stmt = mysqli_prepare($conexao, "INSERT INTO lista_contato(nome, telefone, email) VALUES(?, ?, ?)");
 
-if (mysqli_query($conexao, $sql)) {
+mysqli_stmt_bind_param($stmt, "sss", $nome, $telefone, $email);
+
+if (mysqli_stmt_execute($stmt)) {
     header("Location: temp.php");
     echo "<script>alert('Contato excluído com sucesso!');</script>";
 } else {
     echo "erro: ".mysqli_error($conexao);
 }
+
+mysqli_stmt_close($stmt);
+
+
 }
 
 
 //Remoção de contato
-if (array_key_exists('excluir', $_GET) &&  $_GET['excluir'] != ''){
+if (array_key_exists('excluir', $_GET) && $_GET['excluir'] != '') {
 
-$id = $_GET['excluir'];
+    $id = $_GET['excluir'];
 
-$sql = "DELETE FROM lista_contato WHERE id = '$id'";
+    // Preparar a query com placeholder
+    $stmt = mysqli_prepare($conexao, "DELETE FROM lista_contato WHERE id = ?");
 
-if (mysqli_query($conexao, $sql)) {
-    header("Location: temp.php");
-    echo "registro apagado!";
-} else {
-    echo "erro: ".mysqli_error($conexao);
-}
+    // Associar o parâmetro (i = inteiro)
+    mysqli_stmt_bind_param($stmt, "i", $id);
 
+    // Executar
+    if (mysqli_stmt_execute($stmt)) {
+        header("Location: temp.php");
+        echo "Registro apagado!";
+    } else {
+        echo "Erro: " . mysqli_error($conexao);
+    }
+
+    // Fechar o statement
+    mysqli_stmt_close($stmt);
 }
 
 
     //Procura contato
     $procura = "";
     if (array_key_exists('procura', $_GET) &&  $_GET['procura'] != '') {
-        $procura = $_GET['procura'];
+        $procura = "%" . $_GET['procura'] . "%";
         
-        $sql = "SELECT * FROM lista_contato
-        WHERE nome LIKE '%$procura%'
-        OR telefone LIKE '%$procura%'
-        OR email LIKE '%$procura%'";
+        $stmt = mysqli_prepare($conexao, "SELECT * FROM lista_contato
+        WHERE nome LIKE ?
+        OR telefone LIKE ?
+        OR email LIKE ?");
 
-        $resultado = mysqli_query($conexao, $sql);
+        mysqli_stmt_bind_param($stmt, "sss", $procura, $procura, $procura);
+
+        mysqli_stmt_execute($stmt);
+        
+        $resultado = mysqli_stmt_get_result($stmt);
+
+        mysqli_stmt_close($stmt);
+
     } else {
         $resultado = mysqli_query($conexao, "SELECT * FROM lista_contato");
     }

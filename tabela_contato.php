@@ -1,4 +1,4 @@
-            <h2>Contatos cadastrados</h2>
+
 
             <?php
                 // Consulta ao banco

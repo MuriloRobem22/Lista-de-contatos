@@ -12,12 +12,15 @@
     <body>
         <Main>
             <h1>Lista de Contatos</h1>
+
             
             <!-- formulario de contato -->
-            <?php include 'form_contato.php' ?>
+            <?php include 'form_contato.php'?>
 
-            <!-- mostra a lista de contatos cadastrados -->
-            <?php //include '.php' ?>
+            <h2>Contatos cadastrados</h2>
+
+            <?php include 'form_pesquisa.php' ?>
+
 
             <!-- mostra a lista de contatos cadastrados -->
             <?php include 'tabela_contato.php' ?>
