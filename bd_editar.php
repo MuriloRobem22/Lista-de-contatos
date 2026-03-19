@@ -24,7 +24,7 @@ if (!empty($_POST['nome']) && !empty($_POST['telefone']) && !empty($_POST['email
     mysqli_stmt_bind_param($stmt, "sssi", $nome, $telefone, $email, $id);
 
     if (mysqli_stmt_execute($stmt)) {
-        echo "Contato atualizado com sucesso!";
+        echo "<script>alert('Contato atualizado com sucesso!')</script>";
         // Redireciona de volta para a lista
         header("Location: temp.php");
         exit;

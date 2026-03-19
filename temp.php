@@ -1,5 +1,7 @@
 <?php include "bd_contato.php"; ?>
 <?php include "queryes_contato.php"; ?>
+<?php include "valida_login.php"; ?>
+
 
 <!DOCTYPE html>
     <html lang="en">
@@ -10,6 +12,11 @@
         <link href="main.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
+        
+        <form class="btn_logout" action="logout.php" method="post">
+            <button type="submit">Sair</button>
+        </form>
+
         <Main>
             <h1>Lista de Contatos</h1>
 
@@ -19,11 +26,10 @@
 
             <h2>Contatos cadastrados</h2>
 
-            <?php include 'form_pesquisa.php' ?>
-
+            <?php include 'form_pesquisa.php'?>
 
             <!-- mostra a lista de contatos cadastrados -->
-            <?php include 'tabela_contato.php' ?>
+            <?php include 'tabela_contato.php'?>
 
         </main>
     </body>
